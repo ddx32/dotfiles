@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+COMPUTER_NAME=''
+
+while getopts 'n:' flag; do
+    case "${flag}" in
+        n) COMPUTER_NAME="${OPTARG}"
+    esac
+done
+
+if [ "$COMPUTER_NAME" = '' ]; then
+    echo "Enter computer name"
+    read $COMPUTER_NAME
+fi
+
+echo "the computer name is:"
+echo $COMPUTER_NAME
+
+# Ask for the administrator password upfront
+# sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `macos-defaults.sh` has finished
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# # Set computer name (as done via System Preferences → Sharing)
+# scutil --set ComputerName $COMPUTER_NAME
+# scutil --set HostName $COMPUTER_NAME
+# scutil --set LocalHostName $COMPUTER_NAME
+# defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
+
+# # Disable attempts to open the captive network login screen
+# defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control.plist Active -bool false

@@ -11,6 +11,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.extras
 
 # Locales
 export LANG=en_US.UTF-8

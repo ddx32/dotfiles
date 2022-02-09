@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Bash aliases
+alias serverhere="~/bin/serverhere.sh $*"
+alias ws="~/bin/webstorm-launcher.sh $#"
+alias mount-efi="~/bin/mount-efi.sh"

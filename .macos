@@ -8,7 +8,8 @@ COMPUTER_NAME=''
 
 while getopts 'n:' flag; do
     case "${flag}" in
-        n) COMPUTER_NAME="${OPTARG}"
+        n) COMPUTER_NAME="${OPTARG}";;
+        *) exit 1;;
     esac
 done
 

@@ -1,0 +1,8 @@
+[alias]
+	amend = commit --amend --all --no-edit
+
+[init]
+	defaultBranch = "main"
+
+[color]
+	ui = auto

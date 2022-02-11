@@ -20,11 +20,8 @@ export LC_ALL=en_US.UTF-8
 # Aliases
 source $HOME/.aliases
 
-# Set Homebrew install prefix based on architecture
-BREW_PREFIX="/usr/local"
-[ "$(arch)" = 'arm64' ] && BREW_PREFIX="/opt/homebrew"
-
 # Load Homebrew shell variables
+BREW_PREFIX=$(brew --prefix)
 eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
 
 export NVM_DIR="$HOME/.nvm"

@@ -8,7 +8,6 @@ brew install \
   coreutils \
   curl \
   gnupg \
-  gpsbabel \
   grep \
   mas \
   nvm \
@@ -36,9 +35,9 @@ brew install --cask \
   fission \
   google-chrome \
   google-earth-pro \
-  iterm2 \
   lastfm \
   loopback \
+  microsoft-edge \
   netnewswire \
   postman \
   protonvpn \
@@ -61,6 +60,11 @@ brew install --cask \
   webstorm \
   whatsapp \
   zoomus
+
+# Install VirtualBox on Intel machines
+if [ "$(arch)" = 'i386' ]; then
+  brew install --cask virtualbox
+fi
 
 brew cleanup
 

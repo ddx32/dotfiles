@@ -69,6 +69,7 @@ fi
 brew cleanup
 
 # Install apps from the App Store using mas
+echo "Installing Mac App Store dependencies. Please log in with Apple ID when prompted."
 identifiers=(
   918858936 # Airmail
   824171161 # Affinity Designer
@@ -82,5 +83,42 @@ identifiers=(
   441258766 # Magnet
   1303222628 # Paprika Recipe manager
 )
-
 mas install "${identifiers[@]}"
+
+# Remove default apps from the Dock
+defaults write com.apple.dock persistent-apps -array
+
+dock_apps=(
+	"Safari"
+	"Firefox"
+	"Google Chrome"
+	"Microsoft Edge"
+	"Airmail"
+	"Signal"
+  "Whatsapp"
+  "Telegram"
+  "Slack"
+  "Discord"
+	"Fantastical"
+	"Todoist"
+	"DEVONthink"
+	"1Password"
+  "NetNewsWire"
+  "CARROTweather"
+  "Spotify"
+  "Affinity Designer"
+  "Affinity Photo"
+  "Sublime Text"
+  "Visual Studio Code"
+  "WebStorm"
+  "System Preferences"
+)
+
+echo "Adding apps to the Dock:"
+for APPNAME in "${dock_apps[@]}"
+do
+	echo "$APPNAME"
+	dockutil --no-restart --add "$(find /Applications -maxdepth 1 -type d -iname "$APPNAME*")"
+done
+
+killall Dock

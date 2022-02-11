@@ -1,15 +1,14 @@
 #!/bin/bash
 
-# Copy the dotfiles to home directory
-rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude "macos-bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
-		-avh --no-perms . "$HOME"
-
-# Link iTerm2 preferences file
-ln -s "$HOME"/.iterm/com.googlecode.iterm2.plist "$HOME"/Library/Preferences/com.googlecode.iterm2.plist
+# In this script we initialize macOS with the bare minimum:
+# * Xcode Command line Tools
+# * Rosetta 2
+# * Homebrew
+# * Oh my ZSH
+# * iTerm2
+# * Generate RSA key pair
+# * Set macOS defaults and clean up the Dock
+#
 
 # Start with the obligatory
 xcode-select --install

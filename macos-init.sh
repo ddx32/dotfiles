@@ -27,8 +27,10 @@ if test ! "$(which brew)"; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install Oh My Zsh
-CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Tap the repos
+brew tap homebrew/core
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
 
 # Clean up the Dock
 brew update
@@ -46,9 +48,13 @@ dockutil \
 	--remove Music \
 	--remove Podcasts \
 
-# Link iTerm2 preferences file and install it
-ln -s "$HOME"/.iterm/com.googlecode.iterm2.plist "$HOME"/Library/Preferences/com.googlecode.iterm2.plist
-brew install --cask iterm2
+# Install Oh My Zsh
+CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install and set up iTerm
+brew install --cask iterm2 font-fira-code-nerd-font
+brew install starship
+ln -s "$HOME"/.config/com.googlecode.iterm2.plist "$HOME"/Library/Preferences/com.googlecode.iterm2.plist
 dockutil --add /Applications/iTerm.app
 brew cleanup
 
@@ -59,9 +65,6 @@ brew cleanup
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa.pub" -P ""
 echo "Add the following RSA public key to wherever you need to (GitHub, cloud servers...):"
 cat "$HOME/.ssh/id_rsa.pub"
-
-# Install powerlevel10k custom theme
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 printf "***\n"
 printf "Done!\n"

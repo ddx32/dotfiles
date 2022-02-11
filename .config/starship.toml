@@ -1,0 +1,35 @@
+format = """
+$directory$git_branch$git_metrics$git_state$nodejs$php$python$docker_context$elm$aws$package
+$character """
+
+[directory]
+read_only = " "
+read_only_style = "gray"
+format = " [$path]($style)[$read_only]($read_only_style) "
+
+[aws]
+symbol = "  "
+
+[docker_context]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_metrics]
+disabled = false
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "

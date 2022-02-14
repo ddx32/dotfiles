@@ -5,10 +5,9 @@ cd "$(dirname "${BASH_SOURCE}")" || exit;
 function syncDotFiles() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
-		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
+		--exclude "LICENSE" \
 		-avh --no-perms . "$HOME";
 }
 

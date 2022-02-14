@@ -32,6 +32,7 @@ fi
 brew tap homebrew/core
 brew tap homebrew/cask
 brew tap homebrew/cask-fonts
+brew tap homebrew/command-not-found
 
 # Clean up the Dock
 brew update
@@ -66,6 +67,9 @@ brew cleanup
 brew install nvm
 \. "/usr/local/opt/nvm/nvm.sh"
 nvm install --lts
+
+# Install ZSH tools
+brew install zsh-autosuggestions zsh-syntax-highlighting
 
 # Create RSA key pair
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa.pub" -P ""

@@ -10,7 +10,6 @@ brew install \
   gnupg \
   grep \
   mas \
-  nvm \
   openssh \
   python \
   ruby \

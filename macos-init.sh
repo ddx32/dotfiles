@@ -6,6 +6,7 @@
 # * Homebrew
 # * Oh my ZSH
 # * iTerm2
+# * Node.js & nvm
 # * Generate RSA key pair
 # * Set macOS defaults and clean up the Dock
 #
@@ -60,6 +61,11 @@ brew cleanup
 
 # Set default shell to zsh (systems older than Catalina only)
 [ ! "$SHELL" = "/bin/zsh" ] && chsh -s /bin/zsh
+
+# Install NVM and Node.js LTS
+brew install nvm
+\. "/usr/local/opt/nvm/nvm.sh"
+nvm install --lts
 
 # Create RSA key pair
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa.pub" -P ""

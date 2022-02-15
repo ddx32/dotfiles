@@ -55,10 +55,8 @@ CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.co
 
 # Install and set up iTerm
 brew install --cask iterm2 font-fira-code-nerd-font
-brew install starship
 ln -s "$HOME"/.config/com.googlecode.iterm2.plist "$HOME"/Library/Preferences/com.googlecode.iterm2.plist
 dockutil --add /Applications/iTerm.app
-brew cleanup
 
 # Set default shell to zsh (systems older than Catalina only)
 [ ! "$SHELL" = "/bin/zsh" ] && chsh -s /bin/zsh
@@ -68,8 +66,14 @@ brew install nvm
 \. "/usr/local/opt/nvm/nvm.sh"
 nvm install --lts
 
-# Install ZSH tools
+# Install ZSH plugins
 brew install zsh-autosuggestions zsh-syntax-highlighting
+
+# Install powerlevel10k theme
+brew install romkatv/powerlevel10k/powerlevel10k
+
+# Install a colorful replacement for ls
+brew install exa
 
 # Create RSA key pair
 [ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa.pub" -P ""

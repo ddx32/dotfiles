@@ -1,8 +1,9 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="robbyrussell"
+# Set up powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
+# Select oh-my-zsh plugins
 plugins=(
 	colored-man-pages
 	command-not-found
@@ -13,6 +14,8 @@ plugins=(
 	sudo
 )
 
+# Load Oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 # Locales
@@ -49,5 +52,6 @@ export PATH=$PATH:$GOPATH/bin
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
-# Final command: load Starship prompt
-eval "$(starship init zsh)"
+# Load powerlevel10k theme
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+source "$(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme"

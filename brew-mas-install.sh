@@ -14,6 +14,7 @@ brew install \
   python \
   ruby \
   screen \
+  timewarrior \
   tree \
   vim
 

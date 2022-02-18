@@ -51,7 +51,9 @@ dockutil \
 	--remove Podcasts \
 
 # Install Oh My Zsh
-CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [[ -z "${ZSH}" ]]; then
+	CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 # Install and set up iTerm
 brew install --cask iterm2 font-fira-code-nerd-font

@@ -25,7 +25,7 @@ source "$HOME/.macos"
 # Install Homebrew if not present
 if test ! "$(which brew)"; then
   echo "Installing homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Tap the repos

@@ -22,12 +22,16 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Aliases
-source $HOME/.aliases
-
 # Load Homebrew shell variables
-BREW_PREFIX=$(brew --prefix)
+if [ "$(arch)" = 'arm64' ]; then
+	BREW_PREFIX="/opt/homebrew"
+elif [ "$(arch)" = 'i386' ]; then
+	BREW_PREFIX="/usr/local"
+fi
 eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
+
+# Load aliases
+source $HOME/.aliases
 
 # Command not found handler
 HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"

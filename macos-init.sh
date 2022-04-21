@@ -78,7 +78,7 @@ brew install romkatv/powerlevel10k/powerlevel10k
 brew install exa
 
 # Create RSA key pair
-[ ! -f "$HOME/.ssh/id_rsa.pub" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa.pub" -P ""
+[ ! -f "$HOME/.ssh/id_rsa" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa" -P ""
 echo "Add the following RSA public key to wherever you need to (GitHub, cloud servers...):"
 cat "$HOME/.ssh/id_rsa.pub"
 

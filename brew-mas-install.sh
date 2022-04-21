@@ -35,6 +35,7 @@ brew install --cask \
   fission \
   google-chrome \
   google-earth-pro \
+  karabiner-elements \
   lastfm \
   loopback \
   microsoft-edge \

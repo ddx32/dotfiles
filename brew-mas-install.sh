@@ -42,6 +42,7 @@ brew install --cask \
   netnewswire \
   postman \
   protonvpn \
+  prusaslicer \
   reaper \
   signal \
   skype \

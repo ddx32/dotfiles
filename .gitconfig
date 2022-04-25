@@ -13,3 +13,6 @@
 
 [color]
 	ui = auto
+
+[includeif "gitdir:~/prusa/"]
+	path = ~/prusa/.gitconfig_include

@@ -33,6 +33,9 @@ eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
 # Load aliases
 source $HOME/.aliases
 
+# Load work-related stuff
+[ -f "$HOME/.prusa" ] && source "$HOME/.prusa"
+
 # Command not found handler
 HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 [ -f "$HB_CNF_HANDLER" ] && source "$HB_CNF_HANDLER"

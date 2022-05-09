@@ -10,10 +10,10 @@ Shoutout to Mathias Bynens, [his dotfiles repo](https://github.com/mathiasbynens
 
 * Clone this repo
 * Run `bootstrap.sh`. This copies or updates the dotfiles in your home directory gracefully using `rsync`.
-* Run `macos-init.sh` from your home directory to macOS suck a bit less out of the box and set up basic development tools
-* Run `brew-mas-install.sh` to install the remaining packages and apps to make life easier
+* Run `scripts/macos-init.sh` from your home directory to macOS suck a bit less out of the box and set up basic development tools
+* Run `scripts/brew-mas-install.sh` to install the remaining packages and apps to make life easier
 * Note any extra setup required to get a machine up and running and add them to the install scripts
 
 ## Notes
 
-Tested only on macOS 12.2+
+Tested on macOS 12.2 and 12.3

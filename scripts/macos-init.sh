@@ -33,10 +33,11 @@ brew tap homebrew/core
 brew tap homebrew/cask
 brew tap homebrew/cask-fonts
 brew tap homebrew/command-not-found
+brew tap hpedrorodrigues/tools
 
 # Clean up the Dock
 brew update
-brew install dockutil
+brew install --cask hpedrorodrigues/tools/dockutil
 dockutil \
 	--remove Launchpad \
 	--remove Mail \

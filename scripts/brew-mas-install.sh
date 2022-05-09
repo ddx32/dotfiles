@@ -16,7 +16,8 @@ brew install \
   screen \
   timewarrior \
   tree \
-  vim
+  vim \
+  warp
 
 # Install Apps via brew cask
 brew install --cask \
@@ -60,8 +61,7 @@ brew install --cask \
   visual-studio-code \
   vlc \
   webstorm \
-  whatsapp \
-  zoomus
+  whatsapp
 
 # Install VirtualBox on Intel machines
 if [ "$(arch)" = 'i386' ]; then
@@ -87,40 +87,5 @@ identifiers=(
 )
 mas install "${identifiers[@]}"
 
-# Remove default apps from the Dock
-defaults write com.apple.dock persistent-apps -array
-
-dock_apps=(
-	"Safari"
-	"Firefox"
-	"Google Chrome"
-	"Microsoft Edge"
-	"Airmail"
-	"Signal"
-  "Whatsapp"
-  "Telegram"
-  "Slack"
-  "Discord"
-	"Fantastical"
-	"Todoist"
-	"DEVONthink"
-	"1Password"
-  "NetNewsWire"
-  "CARROTweather"
-  "Spotify"
-  "Affinity Designer"
-  "Affinity Photo"
-  "Sublime Text"
-  "Visual Studio Code"
-  "WebStorm"
-  "System Preferences"
-)
-
-echo "Adding apps to the Dock:"
-for APPNAME in "${dock_apps[@]}"
-do
-	echo "$APPNAME"
-	dockutil --no-restart --add "$(find /Applications -maxdepth 1 -type d -iname "$APPNAME*")"
-done
-
-killall Dock
+# Run script to add apps to the Dock
+~/scripts/dock.sh

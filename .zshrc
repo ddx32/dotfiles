@@ -53,8 +53,9 @@ AUTOSUGGESTIONS="$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ZSH_SYNTAX_HIGHLIGHTING=$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f $ZSH_SYNTAX_HIGHLIGHTING ] && source $ZSH_SYNTAX_HIGHLIGHTING
 
+# Set up $PATH
 export GOPATH="$HOME/go"
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$(brew --prefix)/opt/python/libexec/bin
 
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

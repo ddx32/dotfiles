@@ -79,13 +79,11 @@ brew install romkatv/powerlevel10k/powerlevel10k
 brew install exa
 
 # Create RSA key pair
-[ ! -f "$HOME/.ssh/id_rsa" ] && ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa" -P ""
-echo "Add the following RSA public key to wherever you need to (GitHub, cloud servers...):"
-cat "$HOME/.ssh/id_rsa.pub"
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+	printf "Could not find RSA keypair. Generating...\n\n"
+	ssh-keygen -t rsa -f "$HOME/.ssh/id_rsa" -P ""
+	printf "Add the following RSA public key to wherever you need to (GitHub, cloud servers...):\n\n"
+	cat "$HOME/.ssh/id_rsa.pub"
+fi
 
-printf "***\n"
-printf "Done!\n"
-printf "1. Copy the RSA public key above and put it wherever you need to put it in (GitHub, cloud servers, etc.)\n"
-printf "2. Log out/log in to apply changes\n"
-printf "3. Open iTerm2.app and continue from there (maybe install some apps using brew-mas-install.sh, too)\n"
-printf "***\n"
+printf "\nDone! Log out/log in to apply changes\n"

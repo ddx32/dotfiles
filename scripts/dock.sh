@@ -25,6 +25,8 @@ dock_apps=(
 	"Spotify"
 	"Affinity Designer"
 	"Affinity Photo"
+	"Autodesk Fusion 360.app"
+	"PrusaSlicer"
 	"Sublime Text"
 	"Visual Studio Code"
 	"WebStorm"
@@ -36,7 +38,7 @@ dock_apps=(
 echo "\nAdding apps to the Dock:"
 for APPNAME in "${dock_apps[@]}"
 do
-	APPPATH=$(find /Applications /System/Applications -maxdepth 1 -type d -iname "$APPNAME*")
+	APPPATH=$(find /Applications /System/Applications ~/Applications -maxdepth 1 -type d -iname "$APPNAME*")
 	dockutil --no-restart --add "$APPPATH"
 done
 

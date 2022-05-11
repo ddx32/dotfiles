@@ -25,6 +25,7 @@ brew install --cask \
   adobe-acrobat-reader \
   adobe-creative-cloud \
   airfoil \
+  autodesk-fusion360 \
   carbon-copy-cloner \
   coconutbattery \
   devonthink \

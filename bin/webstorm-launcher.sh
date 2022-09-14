@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-open -na "/Applications/WebStorm.app" --args "$@"
+open -na "/Applications/WebStorm.app" --args "$2"

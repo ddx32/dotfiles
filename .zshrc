@@ -30,6 +30,9 @@ elif [ "$(arch)" = 'i386' ]; then
 fi
 eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
 
+# The iCloud drive has the most inconvenient path name
+export ICLOUD_DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+
 # Load aliases
 source $HOME/.aliases
 

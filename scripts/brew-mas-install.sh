@@ -25,6 +25,7 @@ brew install --cask \
   adobe-acrobat-reader \
   adobe-creative-cloud \
   airfoil \
+  audio-hijack \
   autodesk-fusion360 \
   carbon-copy-cloner \
   coconutbattery \
@@ -83,6 +84,7 @@ identifiers=(
   768053424 # Gapplin
   411052274 # Garmin BaseCamp
   439697913 # Icon Slate
+  1630573891 # Keyboard Switcheroo
   441258766 # Magnet
   1303222628 # Paprika Recipe manager
 )

@@ -56,6 +56,7 @@ ZSH_SYNTAX_HIGHLIGHTING=$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-hi
 # Set up $PATH
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin:$(brew --prefix)/opt/python/libexec/bin
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

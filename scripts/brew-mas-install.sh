@@ -37,6 +37,7 @@ brew install --cask \
   firefox \
   fission \
   google-chrome \
+	google-cloud-sdk \
   google-earth-pro \
   karabiner-elements \
   lastfm \

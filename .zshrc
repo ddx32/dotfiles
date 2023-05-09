@@ -8,6 +8,7 @@ plugins=(
 	colored-man-pages
 	command-not-found
 	docker
+	dotenv
 	git
 	macos
 	npm

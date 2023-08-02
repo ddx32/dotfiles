@@ -4,6 +4,11 @@
 
 [alias]
 	amend = commit --amend --all --no-edit
+	ls = log --oneline
+	s = status
+	co = checkout
+	cob = checkout -b
+	pub = push -u origin HEAD
 
 [init]
 	defaultBranch = "main"

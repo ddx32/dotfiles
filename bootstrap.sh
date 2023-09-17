@@ -4,6 +4,7 @@ cd "$(dirname "${BASH_SOURCE}")" || exit
 
 function syncDotFiles() {
 	rsync --exclude ".git/" \
+		--exclude ".gitignore" \
 		--exclude ".DS_Store" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \

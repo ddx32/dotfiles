@@ -23,6 +23,8 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"
+
 # Load Homebrew shell variables
 if [ "$(arch)" = 'arm64' ]; then
 	BREW_PREFIX="/opt/homebrew"

@@ -47,6 +47,7 @@ brew install --cask \
   postman \
   protonvpn \
   prusaslicer \
+  pycharm \
   reaper \
   signal \
   skype \
@@ -63,7 +64,6 @@ brew install --cask \
   typinator \
   visual-studio-code \
   vlc \
-  webstorm \
   whatsapp
 
 # Install VirtualBox on Intel machines

@@ -2,7 +2,8 @@
 
 # Bash aliases
 alias serverhere="~/bin/serverhere.sh $*"
-alias ws="~/bin/webstorm-launcher.sh $#"
+alias ws="~/bin/pycharm-launcher.sh $#"
+alias pc="~/bin/pycharm-launcher.sh $#"
 alias mount-efi="~/bin/mount-efi.sh"
 
 EXA_BIN="$(brew --prefix)/bin/exa"

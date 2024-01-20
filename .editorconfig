@@ -10,3 +10,7 @@ trim_trailing_whitespace = true
 [*.{js,jsx,ts,tsx,yml,yaml}]
 indent_style = space
 indent_size = 2
+
+[*.py]
+indent_style = space
+indent_size = 4

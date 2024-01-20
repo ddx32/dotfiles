@@ -26,4 +26,4 @@ else
 fi;
 unset syncDotFiles
 
-printf "***\nDone! next, cd to your home directory and run macos-init.sh\n***\n"
+printf "***\nDone!\n"

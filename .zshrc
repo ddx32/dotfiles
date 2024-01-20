@@ -23,6 +23,9 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Load environment variables
+set -a; source ~/.env; set +a
+
 export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"
 
 # Load Homebrew shell variables
@@ -38,6 +41,7 @@ source $HOME/.aliases
 
 # Load work-related stuff
 [ -f "$HOME/.prusa" ] && source "$HOME/.prusa"
+export KUBECONFIG="$KUBECONFIG:$PRUSA_KUBECONFIG_PATH"
 
 # Command not found handler
 HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"

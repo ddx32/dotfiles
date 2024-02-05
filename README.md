@@ -16,4 +16,4 @@ Shoutout to Mathias Bynens, [his dotfiles repo](https://github.com/mathiasbynens
 
 ## Notes
 
-Tested on macOS 12.2 and 12.3
+Tested on macOS 12.2 through 14.3

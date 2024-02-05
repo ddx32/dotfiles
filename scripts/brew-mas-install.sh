@@ -7,8 +7,10 @@ brew install \
   git \
   coreutils \
   curl \
+  dockutil \
   gnupg \
   grep \
+  k9s \
   mas \
   openssh \
   python \
@@ -26,7 +28,6 @@ brew install --cask \
   adobe-creative-cloud \
   airfoil \
   audio-hijack \
-  autodesk-fusion360 \
   carbon-copy-cloner \
   coconutbattery \
   devonthink \
@@ -37,14 +38,13 @@ brew install --cask \
   firefox \
   fission \
   google-chrome \
-	google-cloud-sdk \
+  google-cloud-sdk \
   google-earth-pro \
+  insomnia \
   karabiner-elements \
-  lastfm \
   loopback \
   microsoft-edge \
   netnewswire \
-  postman \
   protonvpn \
   prusaslicer \
   pycharm \
@@ -72,6 +72,21 @@ if [ "$(arch)" = 'i386' ]; then
 fi
 
 brew cleanup
+
+# Install or upgrade node version manager
+if [ ! -f "$HOME/.nvm" ]; then
+	export NVM_DIR="$HOME/.nvm" && (
+		git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+		cd "$NVM_DIR"
+		git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+	) && \. "$NVM_DIR/nvm.sh"
+else
+	(
+		cd "$NVM_DIR"
+		git fetch --tags origin
+		git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+	) && \. "$NVM_DIR/nvm.sh"
+fi
 
 # Install apps from the App Store using mas
 echo "Installing Mac App Store dependencies. Please log in with Apple ID when prompted."

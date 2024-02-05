@@ -1,8 +1,3 @@
-# Set up powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Select oh-my-zsh plugins
 plugins=(
 	colored-man-pages
@@ -49,7 +44,7 @@ HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-
 
 # nvm setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Autosuggestions
@@ -67,7 +62,3 @@ source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh
 
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-
-# Load powerlevel10k theme
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-source "$(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme"

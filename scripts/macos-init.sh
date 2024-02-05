@@ -40,16 +40,13 @@ brew update
 brew install --cask hpedrorodrigues/tools/dockutil
 dockutil \
 	--remove Launchpad \
-	--remove Mail \
 	--remove Maps \
 	--remove FaceTime \
-	--remove Calendar \
 	--remove Contacts \
 	--remove Reminders \
 	--remove Notes \
 	--remove TV \
 	--remove Music \
-	--remove Podcasts \
 
 # Install Oh My Zsh
 if [[ -z "${ZSH}" ]]; then
@@ -63,11 +60,6 @@ dockutil --add /Applications/iTerm.app
 
 # Set default shell to zsh (systems older than Catalina only)
 [ ! "$SHELL" = "/bin/zsh" ] && chsh -s /bin/zsh
-
-# Install NVM and Node.js LTS
-brew install nvm
-\. "/usr/local/opt/nvm/nvm.sh"
-nvm install --lts
 
 # Install ZSH plugins
 brew install zsh-autosuggestions zsh-syntax-highlighting

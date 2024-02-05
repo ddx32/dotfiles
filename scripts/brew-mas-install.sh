@@ -11,6 +11,7 @@ brew install \
   gh \
   gnupg \
   grep \
+  helm \
   k9s \
   mas \
   openssh \

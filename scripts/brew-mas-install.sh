@@ -8,6 +8,7 @@ brew install \
   coreutils \
   curl \
   dockutil \
+  gh \
   gnupg \
   grep \
   k9s \

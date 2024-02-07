@@ -35,7 +35,6 @@ brew install --cask \
   devonthink \
   discord \
   docker \
-  fantastical \
   farrago \
   firefox \
   fission \

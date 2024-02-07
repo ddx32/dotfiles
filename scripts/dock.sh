@@ -16,7 +16,7 @@ dock_apps=(
 	"Slack"
 	"Discord"
 	"CARROTweather"
-	"Fantastical"
+	"Calendar"
 	"Todoist"
 	"DEVONthink"
 	"1Password"

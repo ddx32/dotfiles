@@ -12,6 +12,14 @@ function syncDotFiles() {
 		-avh --no-perms . "$HOME"
 }
 
+if [ ! -f "$HOME/icloud-docs" ]; then
+	ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud-docs"
+fi
+
+if [ ! -f "$HOME/.prusa" ]; then
+	ln -s "$HOME/icloud-docs/prusa" "$HOME/.prusa"
+fi
+
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
 	syncDotFiles
 else

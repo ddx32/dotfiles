@@ -35,8 +35,7 @@ eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
 source $HOME/.aliases
 
 # Load work-related stuff
-[ -f "$HOME/.prusa" ] && source "$HOME/.prusa"
-export KUBECONFIG="$KUBECONFIG:$PRUSA_KUBECONFIG_PATH"
+[ -f "$HOME/.prusa/.config" ] && source "$HOME/.prusa/.config"
 
 # Command not found handler
 HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"

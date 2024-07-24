@@ -68,7 +68,7 @@ brew install zsh-autosuggestions zsh-syntax-highlighting
 brew install romkatv/powerlevel10k/powerlevel10k
 
 # Install a colorful replacement for ls
-brew install exa
+brew install eza
 
 # Create RSA key pair
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then

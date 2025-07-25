@@ -2,16 +2,13 @@
 plugins=(
 	colored-man-pages
 	command-not-found
+	direnv
 	docker
 	git
 	macos
 	npm
 	sudo
 )
-
-# Load Oh-my-zsh
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 # Locales
 export LANG=en_US.UTF-8
@@ -25,11 +22,12 @@ elif [ "$(arch)" = 'i386' ]; then
 fi
 eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
 
+# Load Oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
 # Load aliases
 source $HOME/.aliases
-
-# Load direnv
-eval "$(direnv hook zsh)"
 
 # Load kubeconfig
 export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"

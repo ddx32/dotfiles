@@ -7,6 +7,7 @@ brew install \
   git \
   coreutils \
   curl \
+  direnv \
   dockutil \
   gh \
   gnupg \

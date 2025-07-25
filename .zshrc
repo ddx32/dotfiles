@@ -2,8 +2,8 @@
 plugins=(
 	colored-man-pages
 	command-not-found
+	direnv
 	docker
-	dotenv
 	git
 	macos
 	npm
@@ -18,9 +18,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Load environment variables
-set -a; source ~/.env; set +a
-
+# Load kubeconfig
 export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"
 
 # Load Homebrew shell variables

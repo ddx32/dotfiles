@@ -44,18 +44,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Autosuggestions
-AUTOSUGGESTIONS="$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[ -f $AUTOSUGGESTIONS ] && source $AUTOSUGGESTIONS
-
-# ZSH syntax highlighting
-ZSH_SYNTAX_HIGHLIGHTING=$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f $ZSH_SYNTAX_HIGHLIGHTING ] && source $ZSH_SYNTAX_HIGHLIGHTING
-
 # Set up $PATH
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin:$(brew --prefix)/opt/python/libexec/bin
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 
-[[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

@@ -48,4 +48,7 @@ export NVM_DIR="$HOME/.nvm"
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin:$(brew --prefix)/opt/python/libexec/bin
 
+# Sublime Text
+[ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

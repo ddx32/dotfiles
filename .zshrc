@@ -48,6 +48,10 @@ export NVM_DIR="$HOME/.nvm"
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin:$(brew --prefix)/opt/python/libexec/bin
 
+# GKE gcloud auth plugin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+
 # Sublime Text
 [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 

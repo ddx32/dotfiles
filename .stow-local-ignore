@@ -1,0 +1,7 @@
+\.git
+\.gitignore
+\.DS_Store
+bootstrap.sh
+README\.md
+LICENSE
+.stow-local-ignore

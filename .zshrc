@@ -1,7 +1,6 @@
 # Select oh-my-zsh plugins
 plugins=(
 	colored-man-pages
-	command-not-found
 	direnv
 	docker
 	git
@@ -36,8 +35,10 @@ export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"
 [ -f "$HOME/.prusa/.config" ] && source "$HOME/.prusa/.config"
 
 # Command not found handler
-HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-[ -f "$HB_CNF_HANDLER" ] && source "$HB_CNF_HANDLER"
+HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
+if [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]; then
+  source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER";
+fi
 
 # nvm setup
 export NVM_DIR="$HOME/.nvm"

@@ -57,3 +57,8 @@ export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+
+# Load starship prompt for alacritty
+if [ "$TERM" = "alacritty" ]; then
+  eval "$(starship init zsh)"
+fi

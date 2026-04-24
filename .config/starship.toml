@@ -1,5 +1,9 @@
 format = '$all'
 
+[character]
+success_symbol = "[\\$](fg:#a0a9cb bg:#1d2230)"
+error_symbol = "[\\$](fg:#a0a9cb bg:#1d2230)"
+
 [directory]
 # style = "fg:#e3e5e5 bg:#769ff0"
 format = "[$path]($style) "

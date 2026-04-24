@@ -1,6 +1,7 @@
 \.git
 \.gitignore
 \.DS_Store
+\.idea
 bootstrap.sh
 README\.md
 LICENSE

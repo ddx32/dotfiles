@@ -20,6 +20,7 @@ brew install \
   ruby \
   screen \
   timewarrior \
+  tmux \
   tree \
   vim \
   warp
@@ -27,14 +28,10 @@ brew install \
 # Install Apps via brew cask
 brew install --cask \
   1password \
-  adobe-acrobat-reader \
-  adobe-creative-cloud \
   airfoil \
   audio-hijack \
-  carbon-copy-cloner \
   coconutbattery \
   devonthink \
-  discord \
   docker \
   farrago \
   firefox \
@@ -42,31 +39,18 @@ brew install --cask \
   google-chrome \
   google-cloud-sdk \
   google-earth-pro \
-  insomnia \
-  karabiner-elements \
   loopback \
   microsoft-edge \
-  netnewswire \
   protonvpn \
   prusaslicer \
-  pycharm \
-  reaper \
-  signal \
-  skype \
   slack \
   soundsource \
-  spotify \
-  steam \
   sublime-text \
-  teamviewer \
-  telegram \
   the-unarchiver \
   todoist \
-  transmit \
   typinator \
   visual-studio-code \
-  vlc \
-  whatsapp
+  vlc
 
 # Install VirtualBox on Intel machines
 if [ "$(arch)" = 'i386' ]; then
@@ -93,17 +77,12 @@ fi
 # Install apps from the App Store using mas
 echo "Installing Mac App Store dependencies. Please log in with Apple ID when prompted."
 identifiers=(
-  918858936 # Airmail
-  824171161 # Affinity Designer
-  824183456 # Affinity Photo
-  488548690 # Card Shark Solitaire
   993487541 # Carrot Weather
   411643860 # DaisyDisk
   768053424 # Gapplin
   411052274 # Garmin BaseCamp
   439697913 # Icon Slate
   1630573891 # Keyboard Switcheroo
-  441258766 # Magnet
   1303222628 # Paprika Recipe manager
 )
 mas install "${identifiers[@]}"

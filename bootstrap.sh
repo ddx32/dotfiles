@@ -2,30 +2,16 @@
 
 cd "$(dirname "${BASH_SOURCE}")" || exit
 
-function syncDotFiles() {
-	stow --target="$HOME" --restow .
-}
-
-if [ ! -f "$HOME/icloud-docs" ]; then
+# Create symlinks for iCloud docs and work dir
+if [ ! -e "$HOME/icloud-docs" ]; then
 	ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud-docs"
 fi
 
-if [ ! -f "$HOME/.prusa" ]; then
+if [ ! -e "$HOME/.prusa" ]; then
 	ln -s "$HOME/icloud-docs/prusa" "$HOME/.prusa"
 fi
 
-if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
-	syncDotFiles
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-	echo ""
-	if [[ $REPLY =~ ^[Yy]$ ]]
-	then
-		syncDotFiles
-	else
-		exit 0
-	fi;
-fi;
-unset syncDotFiles
+# Stow dotfiles
+stow --target="$HOME" --restow .
 
 printf "***\nDone!\n"

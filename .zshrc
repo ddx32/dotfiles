@@ -58,10 +58,8 @@ export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 
 [[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
-# Load starship prompt for alacritty and ghostty
-if [ "$TERM" = "alacritty" ] || [ "$TERM" = "xterm-ghostty" ]; then
-  eval "$(starship init zsh)"
-fi
+# Load starship prompt
+eval "$(starship init zsh)"
 
 # pnpm
 export PNPM_HOME="/Users/jsolon/Library/pnpm"

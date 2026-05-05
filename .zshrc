@@ -68,3 +68,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# pnpm completion — generate on first run, then source
+if command -v pnpm >/dev/null 2>&1; then
+  [ ! -f "$HOME/completion-for-pnpm.zsh" ] && pnpm completion zsh > "$HOME/completion-for-pnpm.zsh"
+  source "$HOME/completion-for-pnpm.zsh"
+fi

@@ -1,0 +1,13 @@
+matches:
+  - trigger: "eml"
+    replace: "f@filipruzicka.com"
+  - trigger: "phn"
+    replace: "+420724124888"
+
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"

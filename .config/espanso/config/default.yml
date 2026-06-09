@@ -1,0 +1,5 @@
+toggle_key: OFF
+backend: Auto
+auto_restart: true
+clipboard_threshold: 100
+max_regex_buffer_size: 30

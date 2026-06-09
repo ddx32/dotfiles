@@ -19,7 +19,6 @@ brew install \
   python \
   ruby \
   screen \
-  timewarrior \
   tmux \
   tree \
   vim \
@@ -33,6 +32,7 @@ brew install --cask \
   coconutbattery \
   devonthink \
   docker \
+  espanso \
   farrago \
   firefox \
   fission \
@@ -47,8 +47,6 @@ brew install --cask \
   soundsource \
   sublime-text \
   the-unarchiver \
-  todoist \
-  typinator \
   visual-studio-code \
   vlc
 

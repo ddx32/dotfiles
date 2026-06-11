@@ -1,3 +1,7 @@
+# Portable shell config (shared with bash). Sourced before oh-my-zsh so
+# Homebrew's site-functions land in FPATH before compinit runs.
+[ -f "$HOME/.shellrc" ] && source "$HOME/.shellrc"
+
 # Select oh-my-zsh plugins
 plugins=(
 	colored-man-pages
@@ -7,80 +11,33 @@ plugins=(
 	npm
 	sudo
 )
-# macOS-only plugins
-[[ "$OSTYPE" == darwin* ]] && plugins+=(macos)
+[ "$(uname -s)" = Darwin ] && plugins+=(macos)
 
-# Locales
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# Load Homebrew shell variables (macOS only)
-if [[ "$OSTYPE" == darwin* ]]; then
-	if [ "$(arch)" = 'arm64' ]; then
-		BREW_PREFIX="/opt/homebrew"
-	else
-		BREW_PREFIX="/usr/local"
-	fi
-	eval "$($BREW_PREFIX/bin/brew shellenv)"
-fi
-
-# Load Oh-my-zsh
+# Load Oh-my-zsh (if installed)
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
-# Load aliases
-source $HOME/.aliases
+# --- Zsh-specific glue (completions need oh-my-zsh's compinit first) ---
 
-# Load kubeconfig
-export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"
+# Completions are cached in ~/.cache and regenerated when the tool's
+# binary is newer than the cache (i.e. after an upgrade).
+[ -d "$HOME/.cache" ] || mkdir -p "$HOME/.cache"
 
-# Load work-related stuff
-[ -f "$HOME/.prusa/.config" ] && source "$HOME/.prusa/.config"
-
-# Command not found handler (Homebrew)
-if command -v brew >/dev/null 2>&1; then
-  HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
-  [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ] && source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER"
+# kubectl completion
+if command -v kubectl >/dev/null 2>&1; then
+	_kc="$HOME/.cache/kubectl-completion.zsh"
+	{ [ -s "$_kc" ] && [ "$_kc" -nt "$(command -v kubectl)" ]; } || kubectl completion zsh > "$_kc"
+	source "$_kc"
+	unset _kc
 fi
 
-# nvm setup
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Set up $PATH
-export GOPATH="$HOME/go"
-export PATH="$HOME/bin:$PATH:$GOPATH/bin"
-if command -v brew >/dev/null 2>&1; then
-	export PATH="$PATH:$(brew --prefix)/opt/python/libexec/bin"
-fi
-
-# GKE gcloud auth plugin
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-[ -d "/opt/homebrew/share/google-cloud-sdk/bin" ] && export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
-
-# Sublime Text
-[ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
-[[ -f /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-
-# Load starship prompt
-eval "$(starship init zsh)"
-
-# pnpm
-if [[ "$OSTYPE" == darwin* ]]; then
-	export PNPM_HOME="$HOME/Library/pnpm"
-else
-	export PNPM_HOME="$HOME/.local/share/pnpm"
-fi
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# pnpm completion — generate on first run, then source
+# pnpm completion
 if command -v pnpm >/dev/null 2>&1; then
-  [ ! -f "$HOME/completion-for-pnpm.zsh" ] && pnpm completion zsh > "$HOME/completion-for-pnpm.zsh"
-  source "$HOME/completion-for-pnpm.zsh"
+	_pc="$HOME/.cache/pnpm-completion.zsh"
+	{ [ -s "$_pc" ] && [ "$_pc" -nt "$(command -v pnpm)" ]; } || pnpm completion zsh > "$_pc"
+	source "$_pc"
+	unset _pc
 fi
+
+# starship prompt
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"

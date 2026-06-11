@@ -1,0 +1,73 @@
+# ~/.shellrc — portable shell config, sourced by both bash and zsh.
+# Keep this POSIX-compatible. Shell-specific glue (prompt, completions)
+# lives in ~/.bashrc and ~/.zshrc.
+
+# --- Locales ---
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# --- Homebrew (macOS or Linuxbrew) ---
+# Load shellenv from whichever brew install exists.
+for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+	if [ -x "$_brew" ]; then
+		eval "$("$_brew" shellenv)"
+		break
+	fi
+done
+unset _brew
+
+# --- Local bin ---
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
+# --- Aliases ---
+[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
+
+# --- kubeconfig ---
+export KUBECONFIG="${KUBECONFIG:+$KUBECONFIG:}$HOME/.kube/config-cdg"
+
+# --- Work config ---
+[ -f "$HOME/.prusa/.config" ] && . "$HOME/.prusa/.config"
+
+# --- Homebrew command-not-found handler ---
+# HOMEBREW_PREFIX/HOMEBREW_REPOSITORY come from brew shellenv above; using
+# them instead of forking `brew --prefix` keeps shell startup fast.
+if [ -n "$HOMEBREW_REPOSITORY" ]; then
+	_cnf="$HOMEBREW_REPOSITORY/Library/Homebrew/command-not-found/handler.sh"
+	[ -f "$_cnf" ] && . "$_cnf"
+	unset _cnf
+fi
+
+# --- nvm ---
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+# --- Go ---
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# --- Python (Homebrew) ---
+if [ -n "$HOMEBREW_PREFIX" ] && [ -d "$HOMEBREW_PREFIX/opt/python/libexec/bin" ]; then
+	export PATH="$PATH:$HOMEBREW_PREFIX/opt/python/libexec/bin"
+fi
+
+# --- gcloud / GKE auth plugin ---
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+if [ -n "$HOMEBREW_PREFIX" ] && [ -d "$HOMEBREW_PREFIX/share/google-cloud-sdk/bin" ]; then
+	export PATH="$HOMEBREW_PREFIX/share/google-cloud-sdk/bin:$PATH"
+fi
+
+# --- Sublime Text (macOS) ---
+[ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && \
+	export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
+# --- pnpm ---
+if [ "$(uname -s)" = "Darwin" ]; then
+	export PNPM_HOME="$HOME/Library/pnpm"
+else
+	export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
+case ":$PATH:" in
+	*":$PNPM_HOME:"*) ;;
+	*) [ -d "$PNPM_HOME" ] && export PATH="$PNPM_HOME:$PATH" ;;
+esac

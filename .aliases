@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Bash aliases
-alias serverhere="~/bin/serverhere.sh $*"
+serverhere() { ~/bin/server-here.sh "$@"; }
 alias mount-efi="~/bin/mount-efi.sh"
 
 if command -v eza >/dev/null 2>&1; then

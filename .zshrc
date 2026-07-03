@@ -50,7 +50,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Set up $PATH
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$HOME/bin:$PATH:$GOPATH/bin"
 if command -v brew >/dev/null 2>&1; then
 	export PATH="$PATH:$(brew --prefix)/opt/python/libexec/bin"
 fi

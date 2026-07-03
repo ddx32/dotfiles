@@ -6,3 +6,5 @@ bootstrap.sh
 README\.md
 LICENSE
 .stow-local-ignore
+scripts
+\.macos

@@ -2,8 +2,6 @@
 
 # Bash aliases
 alias serverhere="~/bin/serverhere.sh $*"
-alias ws="~/bin/pycharm-launcher.sh $#"
-alias pc="~/bin/pycharm-launcher.sh $#"
 alias mount-efi="~/bin/mount-efi.sh"
 
 if command -v eza >/dev/null 2>&1; then

@@ -29,7 +29,6 @@ dock_apps=(
 	"PrusaSlicer"
 	"Sublime Text"
 	"Visual Studio Code"
-	"PyCharm"
 	"Warp"
 	"App Store"
 	"System Settings"

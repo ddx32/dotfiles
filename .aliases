@@ -6,7 +6,6 @@ alias ws="~/bin/pycharm-launcher.sh $#"
 alias pc="~/bin/pycharm-launcher.sh $#"
 alias mount-efi="~/bin/mount-efi.sh"
 
-EZA_BIN="$(brew --prefix)/bin/eza"
-if [[ -x $EZA_BIN ]]; then
-	alias ls="$EZA_BIN"
+if command -v eza >/dev/null 2>&1; then
+	alias ls="eza"
 fi

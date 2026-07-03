@@ -1,9 +1,11 @@
 [general]
 live_config_reload = true
+# Machine-local overrides (font size, etc). Missing file is silently skipped.
+# Imports are loaded before this file, so keep overridable keys OUT of here.
+import = ["~/.config/alacritty/local.toml"]
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-size = 12
 
 [window]
-padding = { x = 15, y = 15 }
+padding = { x = 0, y = 0 }

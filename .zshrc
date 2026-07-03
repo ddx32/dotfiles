@@ -4,22 +4,25 @@ plugins=(
 	direnv
 	docker
 	git
-	macos
 	npm
 	sudo
 )
+# macOS-only plugins
+[[ "$OSTYPE" == darwin* ]] && plugins+=(macos)
 
 # Locales
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Load Homebrew shell variables
-if [ "$(arch)" = 'arm64' ]; then
-	BREW_PREFIX="/opt/homebrew"
-elif [ "$(arch)" = 'i386' ]; then
-	BREW_PREFIX="/usr/local"
+# Load Homebrew shell variables (macOS only)
+if [[ "$OSTYPE" == darwin* ]]; then
+	if [ "$(arch)" = 'arm64' ]; then
+		BREW_PREFIX="/opt/homebrew"
+	else
+		BREW_PREFIX="/usr/local"
+	fi
+	eval "$($BREW_PREFIX/bin/brew shellenv)"
 fi
-eval $(/bin/bash -c "$BREW_PREFIX/bin/brew shellenv")
 
 # Load Oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -34,10 +37,10 @@ export KUBECONFIG="$KUBECONFIG:$HOME/.kube/config-cdg"
 # Load work-related stuff
 [ -f "$HOME/.prusa/.config" ] && source "$HOME/.prusa/.config"
 
-# Command not found handler
-HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
-if [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]; then
-  source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER";
+# Command not found handler (Homebrew)
+if command -v brew >/dev/null 2>&1; then
+  HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
+  [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ] && source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER"
 fi
 
 # nvm setup
@@ -47,11 +50,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # Set up $PATH
 export GOPATH="$HOME/go"
-export PATH=$PATH:$GOPATH/bin:$(brew --prefix)/opt/python/libexec/bin
+export PATH="$PATH:$GOPATH/bin"
+if command -v brew >/dev/null 2>&1; then
+	export PATH="$PATH:$(brew --prefix)/opt/python/libexec/bin"
+fi
 
 # GKE gcloud auth plugin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+[ -d "/opt/homebrew/share/google-cloud-sdk/bin" ] && export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 
 # Sublime Text
 [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
@@ -62,7 +68,11 @@ export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 eval "$(starship init zsh)"
 
 # pnpm
-export PNPM_HOME="/Users/jsolon/Library/pnpm"
+if [[ "$OSTYPE" == darwin* ]]; then
+	export PNPM_HOME="$HOME/Library/pnpm"
+else
+	export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

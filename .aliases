@@ -7,3 +7,8 @@ alias mount-efi="~/bin/mount-efi.sh"
 if command -v eza >/dev/null 2>&1; then
 	alias ls="eza"
 fi
+
+# Zed editor CLI (Arch package names it zeditor)
+if command -v zeditor >/dev/null 2>&1; then
+	alias zed="zeditor"
+fi

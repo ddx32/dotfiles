@@ -22,7 +22,8 @@ brew install \
   tmux \
   tree \
   vim \
-  warp
+  warp \
+  zellij
 
 # Install Apps via brew cask
 brew install --cask \

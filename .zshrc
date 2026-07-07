@@ -45,10 +45,10 @@ command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 # starship prompt
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
-# pnpm
-export PNPM_HOME="/home/jsolon/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
+# zellij — auto-start a session on interactive shells (skip when already
+# inside one; respects ZELLIJ_AUTO_ATTACH / ZELLIJ_AUTO_EXIT).
+if command -v zellij >/dev/null 2>&1 && [ -z "$ZELLIJ" ]; then
+	case $- in
+		*i*) eval "$(zellij setup --generate-auto-start zsh)" ;;
+	esac
+fi

@@ -37,7 +37,7 @@ if command -v pnpm >/dev/null 2>&1; then
 	unset _pc
 fi
 
-# direnv (zsh gets this via the oh-my-zsh direnv plugin)
+# direnv (hooked explicitly, same as .zshrc, so it works without oh-my-zsh)
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
 
 # starship prompt

@@ -37,5 +37,8 @@ if command -v pnpm >/dev/null 2>&1; then
 	unset _pc
 fi
 
+# direnv (zsh gets this via the oh-my-zsh direnv plugin)
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
+
 # starship prompt
 command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"

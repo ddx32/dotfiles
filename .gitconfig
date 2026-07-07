@@ -21,3 +21,6 @@
 
 [includeif "gitdir:~/prusa/"]
 	path = ~/prusa/.gitconfig_include
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential

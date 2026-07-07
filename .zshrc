@@ -5,7 +5,6 @@
 # Select oh-my-zsh plugins
 plugins=(
 	colored-man-pages
-	direnv
 	docker
 	git
 	npm
@@ -39,5 +38,17 @@ if command -v pnpm >/dev/null 2>&1; then
 	unset _pc
 fi
 
+# direnv (hooked explicitly, not via the oh-my-zsh plugin, so it also
+# works on machines without oh-my-zsh)
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
 # starship prompt
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/home/jsolon/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

@@ -47,7 +47,10 @@ command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # zellij — auto-start a session on interactive shells (skip when already
 # inside one; respects ZELLIJ_AUTO_ATTACH / ZELLIJ_AUTO_EXIT).
-if command -v zellij >/dev/null 2>&1 && [ -z "$ZELLIJ" ]; then
+# The -t tests are load-bearing: `zsh -i -c ...` (editors, tooling, shell
+# snapshots) sets the interactive flag with no controlling tty, and zellij
+# panics on "could not enable raw mode" there.
+if command -v zellij >/dev/null 2>&1 && [ -z "$ZELLIJ" ] && [ -t 0 ] && [ -t 1 ]; then
 	case $- in
 		*i*) eval "$(zellij setup --generate-auto-start zsh)" ;;
 	esac

@@ -1,5 +1,9 @@
-[general]
+# Root-level, not under [general]: the [general] section only exists in
+# alacritty 0.14+, and older versions silently drop the whole section
+# ("Unused config key: general"). 0.14+ still honours these at the root,
+# just with a deprecation warning — so this works on both.
 live_config_reload = true
+
 # Machine-local overrides (font size, etc). Missing file is silently skipped.
 # Imports are loaded before this file, so keep overridable keys OUT of here.
 import = ["~/.config/alacritty/local.toml"]

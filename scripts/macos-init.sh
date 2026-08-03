@@ -31,7 +31,7 @@ fi
 # Tap the repos
 brew tap homebrew/core
 brew tap homebrew/cask
-brew tap homebrew/cask-fonts
+# homebrew/cask-fonts was archived in 2024; font casks now live in homebrew/cask
 brew tap homebrew/command-not-found
 brew tap hpedrorodrigues/tools
 
@@ -53,8 +53,10 @@ if [[ -z "${ZSH}" ]]; then
 	CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# Install and set up iTerm
-brew install --cask iterm2 font-fira-code-nerd-font
+# Install and set up iTerm. The terminal font (JetBrainsMono Nerd Font) is
+# installed by bootstrap.sh, which owns it cross-platform because the stowed
+# alacritty.toml is what names the family.
+brew install --cask iterm2
 ln -s "$HOME"/.config/com.googlecode.iterm2.plist "$HOME"/Library/Preferences/com.googlecode.iterm2.plist
 dockutil --add /Applications/iTerm.app
 

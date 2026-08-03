@@ -19,7 +19,22 @@ cd ~/dotfiles
 1. Installs **stow** if missing (detects `brew`, `pacman`, or `apt-get`).
 2. Symlinks the dotfiles into `$HOME` with `stow --restow`.
 3. Installs **zsh** and **oh-my-zsh** if missing (keeping this repo's `.zshrc`).
-4. Sets zsh as your login shell.
+4. Installs the tools the stowed configs depend on: **starship**, **zellij**,
+   and **JetBrainsMono Nerd Font**.
+5. Sets zsh as your login shell.
+
+Step 4 matters because every one of those is loaded behind a `command -v`
+guard: if the binary is missing the config silently does nothing, so you get
+the default oh-my-zsh prompt (or a fallback font) with no error to explain it.
+
+Where a package manager carries them (`brew`, `pacman`) they're installed from
+it. Debian/Ubuntu packages neither starship nor zellij, so those fall back to
+the upstream release binaries in `~/.local/bin` — which `.shellrc` puts on
+PATH. The font falls back to the [nerd-fonts][nf] release; note that Debian's
+`fonts-jetbrains-mono` is the *unpatched* upstream font and does **not** work,
+since `starship.toml` uses Nerd Font glyphs.
+
+[nf]: https://github.com/ryanoasis/nerd-fonts
 
 ### First run over existing files
 
@@ -49,7 +64,7 @@ The shell config guards platform-specific pieces so a single `.zshrc` works ever
 
 These live in the repo but are **not** stowed — run them explicitly on a fresh Mac:
 
-- `scripts/macos-init.sh` — Xcode CLI tools, Rosetta, Homebrew, oh-my-zsh plugins, fonts, and `.macos` system defaults.
+- `scripts/macos-init.sh` — Xcode CLI tools, Rosetta, Homebrew, oh-my-zsh plugins, iTerm2, and `.macos` system defaults. (The terminal font is *not* here — `bootstrap.sh` owns it cross-platform, since the stowed `alacritty.toml` is what names the family.)
 - `scripts/brew-mas-install.sh` — installs formulae, casks, and Mac App Store apps.
 - `scripts/dock.sh` — rebuilds the Dock from a fixed app list.
 - `scripts/icloud-files.sh` — symlinks iCloud Drive locations.
@@ -64,4 +79,10 @@ Kept out of the repo so per-machine and sensitive settings stay local:
 
 ## Notes
 
-Tested on macOS 12.2–14.3 and Arch Linux.
+Tested on macOS 12.2–14.3, Arch Linux, and Linux Mint 22.3 (Ubuntu 24.04).
+
+`alacritty.toml` keeps `import` and `live_config_reload` at the root rather
+than under `[general]`: that section only exists in Alacritty 0.14+, and older
+versions discard the whole unknown section (`Unused config key: general`),
+silently taking the local-override import with it. 0.14+ still honours the
+root-level keys, just with a deprecation warning.

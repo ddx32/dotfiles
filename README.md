@@ -48,7 +48,7 @@ This uses `stow --adopt` to pull the existing files into the repo, then `git res
 
 ## What gets stowed
 
-Everything at the repo root **except** the entries in `.stow-local-ignore` is symlinked into `$HOME`. That includes `.zshrc`, `.aliases`, `.gitconfig`, `.tmux.conf`, `.editorconfig`, `bin/`, and everything under `.config/` (alacritty, starship, espanso, plus the macOS-only aerospace/ghostty).
+Everything at the repo root **except** the entries in `.stow-local-ignore` is symlinked into `$HOME`. That includes `.zshrc`, `.aliases`, `.gitconfig`, `.tmux.conf`, `.editorconfig`, `bin/`, everything under `.config/` (alacritty, starship, espanso, plus the macOS-only aerospace/ghostty), and `.claude/skills/` (custom Claude Code skills; stow folds into the existing `~/.claude`, leaving its local state alone).
 
 **Not stowed** (repo-only): `bootstrap.sh`, `README.md`, `LICENSE`, git metadata, and the macOS-only `scripts/` and `.macos` (see below).
 

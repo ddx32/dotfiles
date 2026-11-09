@@ -5,7 +5,10 @@ serverhere() { ~/bin/server-here.sh "$@"; }
 alias mount-efi="~/bin/mount-efi.sh"
 
 if command -v eza >/dev/null 2>&1; then
-	alias ls="eza"
+	alias ls="eza -lh --group-directories-first --icons=auto"
+	alias lsa="ls -a"
+	alias lt="eza --tree --level=2 --long --icons --git"
+	alias lta="lt -a"
 fi
 
 # Zed editor CLI (Arch package names it zeditor)

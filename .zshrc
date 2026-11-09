@@ -16,6 +16,9 @@ plugins=(
 export ZSH="$HOME/.oh-my-zsh"
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
+# oh-my-zsh's lib defines its own ls/lsa aliases; re-apply ours on top.
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
+
 # --- Zsh-specific glue (completions need oh-my-zsh's compinit first) ---
 
 # Completions are cached in ~/.cache and regenerated when the tool's

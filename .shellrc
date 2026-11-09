@@ -61,6 +61,10 @@ fi
 [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] && \
 	export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
+# --- Alacritty (macOS) ---
+[ -d "/Applications/Alacritty.app/Contents/MacOS" ] && \
+	export PATH="/Applications/Alacritty.app/Contents/MacOS:$PATH"
+
 # --- pnpm ---
 if [ "$(uname -s)" = "Darwin" ]; then
 	export PNPM_HOME="$HOME/Library/pnpm"

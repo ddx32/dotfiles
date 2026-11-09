@@ -113,7 +113,7 @@ if ! command -v starship &>/dev/null; then
 	esac
 fi
 
-# zellij — auto-started on interactive shells by .zshrc. Also unpackaged on
+# zellij — terminal multiplexer, started manually. Also unpackaged on
 # Debian/Ubuntu.
 if ! command -v zellij &>/dev/null; then
 	case "$PKG" in

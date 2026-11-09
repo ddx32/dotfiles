@@ -23,7 +23,7 @@
 	path = ~/prusa/.gitconfig_include
 [credential "https://gitlab.com"]
 	helper = 
-	helper = !/usr/bin/glab auth git-credential
+	helper = !glab auth git-credential
 [credential "https://github.com"]
 	helper = 
 	helper = !gh auth git-credential

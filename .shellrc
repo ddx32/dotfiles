@@ -23,7 +23,7 @@ export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 # --- kubeconfig ---
-export KUBECONFIG="${KUBECONFIG:+$KUBECONFIG:}$HOME/.kube/config-cdg"
+export KUBECONFIG="${KUBECONFIG:+$KUBECONFIG:}$HOME/.kube/homelab"
 
 # --- Work config ---
 [ -f "$HOME/.prusa/.config" ] && . "$HOME/.prusa/.config"
